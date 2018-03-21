@@ -21,7 +21,9 @@ class SudokuModel {
         for x in 0...8 {
             for y in 0...8 {
                 board[x][y].number = array[x][y]
-                board[x][y].fixed = true
+                if (array[x][y] != 0) {
+                    board[x][y].fixed = true
+                }
             }
         }
     }

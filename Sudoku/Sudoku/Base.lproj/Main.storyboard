@@ -98,6 +98,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TF2-qX-ATx" secondAttribute="height" multiplier="1:1" id="Tcb-8E-B91"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tzd-La-azd" appends="YES" id="aYV-3A-gv2"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcn-ly-seK" userLabel="CompletionView">
                                 <rect key="frame" x="0.0" y="439" width="375" height="228"/>
@@ -298,9 +301,6 @@
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="tzd-La-azd" appends="YES" id="cyG-oc-2Be"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
