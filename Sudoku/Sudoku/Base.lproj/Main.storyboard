@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XBl-kF-j50">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="zw1-MW-gYm">
+            <objects>
+                <navigationController id="jjA-QJ-FAh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2D7-Zs-sMJ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xFX-NE-aUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-730" y="-547"/>
+        </scene>
+        <!--Main Menu-->
+        <scene sceneID="cWl-Zz-kZM">
+            <objects>
+                <viewController title="Main Menu" id="XBl-kF-j50" customClass="MainMenuViewController" customModule="Sudoku" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lgp-v3-RUl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEY-1c-XMW">
+                                <rect key="frame" x="0.0" y="20" width="375" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="New Easy Game"/>
+                                <connections>
+                                    <action selector="easyGame:" destination="XBl-kF-j50" eventType="touchUpInside" id="bNs-00-y2F"/>
+                                    <segue destination="pyC-da-puU" kind="show" identifier="Easy" id="lwe-Qr-PGH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cof-UR-IgW">
+                                <rect key="frame" x="0.0" y="67" width="375" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="New Hard Game"/>
+                                <connections>
+                                    <segue destination="pyC-da-puU" kind="show" identifier="Hard" id="TGa-Ig-DQb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1W-2P-LjR">
+                                <rect key="frame" x="0.0" y="114" width="375" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Continue Existing Game"/>
+                                <connections>
+                                    <segue destination="pyC-da-puU" kind="show" identifier="Continue" id="3cI-M9-pLK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Yid-YH-H1u" firstAttribute="trailing" secondItem="cof-UR-IgW" secondAttribute="trailing" id="MwK-MC-cgR"/>
+                            <constraint firstItem="cof-UR-IgW" firstAttribute="top" secondItem="OEY-1c-XMW" secondAttribute="bottom" constant="5" id="Z52-D0-EPi"/>
+                            <constraint firstItem="Yid-YH-H1u" firstAttribute="trailing" secondItem="A1W-2P-LjR" secondAttribute="trailing" id="Zay-yc-RwU"/>
+                            <constraint firstItem="A1W-2P-LjR" firstAttribute="top" secondItem="cof-UR-IgW" secondAttribute="bottom" constant="5" id="a0z-3F-UIt"/>
+                            <constraint firstItem="OEY-1c-XMW" firstAttribute="leading" secondItem="Yid-YH-H1u" secondAttribute="leading" id="d7I-0o-DuF"/>
+                            <constraint firstItem="OEY-1c-XMW" firstAttribute="top" secondItem="Yid-YH-H1u" secondAttribute="top" id="j7X-Oa-T3x"/>
+                            <constraint firstItem="Yid-YH-H1u" firstAttribute="trailing" secondItem="OEY-1c-XMW" secondAttribute="trailing" id="nKg-HW-Zeq"/>
+                            <constraint firstItem="A1W-2P-LjR" firstAttribute="leading" secondItem="Yid-YH-H1u" secondAttribute="leading" id="p7t-5d-2rQ"/>
+                            <constraint firstItem="cof-UR-IgW" firstAttribute="leading" secondItem="Yid-YH-H1u" secondAttribute="leading" id="sFe-iZ-EsV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Yid-YH-H1u"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sudoku" id="gHH-ht-P1J">
+                        <barButtonItem key="backBarButtonItem" title="Main Menu" id="Od0-TJ-1pg"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="54V-Ru-8Sv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-34" y="-547"/>
+        </scene>
+        <!--Puzzle-->
+        <scene sceneID="qPx-4q-E6V">
+            <objects>
+                <viewController title="Puzzle" id="pyC-da-puU" customClass="PuzzleViewController" customModule="Sudoku" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yyh-Kz-Yl3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TF2-qX-ATx" userLabel="PuzzleView" customClass="SudokuView" customModule="Sudoku" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="375"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TF2-qX-ATx" secondAttribute="height" multiplier="1:1" id="Tcb-8E-B91"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcn-ly-seK" userLabel="CompletionView">
+                                <rect key="frame" x="0.0" y="395" width="375" height="272"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="a5Y-KG-9FE" userLabel="CompHorizStackView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="272"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZG2-oQ-vI3" userLabel="TopVertStackView">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3J-lo-CN8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="90.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="1"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unU-A0-nb3">
+                                                        <rect key="frame" x="94" y="0.0" width="93.5" height="90.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="2"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oej-Ci-tbF">
+                                                        <rect key="frame" x="187.5" y="0.0" width="94" height="90.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="3"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edd-Qw-I07">
+                                                        <rect key="frame" x="281.5" y="0.0" width="93.5" height="90.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                                        <state key="normal" title="✏️"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="unU-A0-nb3" firstAttribute="width" secondItem="n3J-lo-CN8" secondAttribute="width" id="3Mm-YX-RzC"/>
+                                                    <constraint firstItem="unU-A0-nb3" firstAttribute="height" secondItem="n3J-lo-CN8" secondAttribute="height" id="5ew-51-yfA"/>
+                                                    <constraint firstItem="oej-Ci-tbF" firstAttribute="width" secondItem="n3J-lo-CN8" secondAttribute="width" id="ATu-Zq-dke"/>
+                                                    <constraint firstItem="edd-Qw-I07" firstAttribute="height" secondItem="n3J-lo-CN8" secondAttribute="height" id="HuG-lk-5qM"/>
+                                                    <constraint firstItem="n3J-lo-CN8" firstAttribute="width" secondItem="edd-Qw-I07" secondAttribute="width" id="Q1T-nv-ChZ"/>
+                                                    <constraint firstItem="oej-Ci-tbF" firstAttribute="height" secondItem="n3J-lo-CN8" secondAttribute="height" id="lv5-Bb-oIo"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUC-lX-IXh" userLabel="MidVertStackView">
+                                                <rect key="frame" x="0.0" y="90.5" width="375" height="91"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HRh-ef-N2Y">
+                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="91"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="4"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Xi-Ks-BN4">
+                                                        <rect key="frame" x="94" y="0.0" width="93.5" height="91"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="5"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xl8-V2-cf7">
+                                                        <rect key="frame" x="187.5" y="0.0" width="94" height="91"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="6"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J5J-z9-zY6">
+                                                        <rect key="frame" x="281.5" y="0.0" width="93.5" height="91"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                                        <state key="normal" title="🗑"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="J5J-z9-zY6" firstAttribute="height" secondItem="HRh-ef-N2Y" secondAttribute="height" id="6nM-Dm-szE"/>
+                                                    <constraint firstItem="4Xi-Ks-BN4" firstAttribute="height" secondItem="HRh-ef-N2Y" secondAttribute="height" id="GSK-3Y-BUE"/>
+                                                    <constraint firstItem="Xl8-V2-cf7" firstAttribute="height" secondItem="HRh-ef-N2Y" secondAttribute="height" id="fFo-bv-2UA"/>
+                                                    <constraint firstItem="4Xi-Ks-BN4" firstAttribute="width" secondItem="HRh-ef-N2Y" secondAttribute="width" id="gBQ-f2-u7e"/>
+                                                    <constraint firstItem="Xl8-V2-cf7" firstAttribute="width" secondItem="HRh-ef-N2Y" secondAttribute="width" id="gtb-uv-6Mx"/>
+                                                    <constraint firstItem="J5J-z9-zY6" firstAttribute="width" secondItem="HRh-ef-N2Y" secondAttribute="width" id="jNh-H7-rGF"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lg0-IJ-m7j" userLabel="BottomVertStackView">
+                                                <rect key="frame" x="0.0" y="181.5" width="375" height="90.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uO-E5-PWf">
+                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="90.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="7"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5S-9j-qWU">
+                                                        <rect key="frame" x="94" y="0.0" width="93.5" height="90.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="8"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pT4-4i-Yj8">
+                                                        <rect key="frame" x="187.5" y="0.0" width="94" height="90.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="9"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8d-0B-f2Q">
+                                                        <rect key="frame" x="281.5" y="0.0" width="93.5" height="90.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                                        <state key="normal" title="⌘">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Z8d-0B-f2Q" firstAttribute="width" secondItem="6uO-E5-PWf" secondAttribute="width" id="A8K-XJ-5Wi"/>
+                                                    <constraint firstItem="n5S-9j-qWU" firstAttribute="height" secondItem="6uO-E5-PWf" secondAttribute="height" id="Iag-fI-crV"/>
+                                                    <constraint firstItem="n5S-9j-qWU" firstAttribute="width" secondItem="6uO-E5-PWf" secondAttribute="width" id="YVA-pt-gUV"/>
+                                                    <constraint firstItem="pT4-4i-Yj8" firstAttribute="width" secondItem="6uO-E5-PWf" secondAttribute="width" id="bEe-vd-awa"/>
+                                                    <constraint firstItem="Z8d-0B-f2Q" firstAttribute="height" secondItem="6uO-E5-PWf" secondAttribute="height" id="lGy-va-5j9"/>
+                                                    <constraint firstItem="pT4-4i-Yj8" firstAttribute="height" secondItem="6uO-E5-PWf" secondAttribute="height" id="mGS-td-PjH"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="lg0-IJ-m7j" firstAttribute="height" secondItem="ZG2-oQ-vI3" secondAttribute="height" id="5PK-U0-Afh"/>
+                                            <constraint firstItem="lg0-IJ-m7j" firstAttribute="top" secondItem="gUC-lX-IXh" secondAttribute="bottom" id="M2H-47-UeX"/>
+                                            <constraint firstAttribute="trailing" secondItem="lg0-IJ-m7j" secondAttribute="trailing" id="Nb3-0c-UXi"/>
+                                            <constraint firstItem="gUC-lX-IXh" firstAttribute="top" secondItem="ZG2-oQ-vI3" secondAttribute="bottom" id="PLl-hk-0wf"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZG2-oQ-vI3" secondAttribute="trailing" id="WSd-TC-BrB"/>
+                                            <constraint firstAttribute="trailing" secondItem="gUC-lX-IXh" secondAttribute="trailing" id="m79-e2-GLM"/>
+                                            <constraint firstItem="lg0-IJ-m7j" firstAttribute="leading" secondItem="a5Y-KG-9FE" secondAttribute="leading" id="nyG-nS-ce7"/>
+                                            <constraint firstItem="ZG2-oQ-vI3" firstAttribute="top" secondItem="a5Y-KG-9FE" secondAttribute="top" id="pba-N4-QW7"/>
+                                            <constraint firstItem="gUC-lX-IXh" firstAttribute="height" secondItem="ZG2-oQ-vI3" secondAttribute="height" id="qWn-st-9K0"/>
+                                            <constraint firstItem="ZG2-oQ-vI3" firstAttribute="leading" secondItem="a5Y-KG-9FE" secondAttribute="leading" id="v0g-jR-9vm"/>
+                                            <constraint firstItem="gUC-lX-IXh" firstAttribute="leading" secondItem="a5Y-KG-9FE" secondAttribute="leading" id="zQM-4u-QYe"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="a5Y-KG-9FE" secondAttribute="trailing" id="9cv-JI-Kg8"/>
+                                    <constraint firstAttribute="leading" secondItem="a5Y-KG-9FE" secondAttribute="leading" id="FZe-3X-NlW"/>
+                                    <constraint firstAttribute="top" secondItem="a5Y-KG-9FE" secondAttribute="top" id="XEG-DW-641"/>
+                                    <constraint firstAttribute="bottom" secondItem="a5Y-KG-9FE" secondAttribute="bottom" id="suA-g9-OnR"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.BorderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tzd-La-azd" appends="YES" id="cyG-oc-2Be"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qcn-ly-seK" firstAttribute="top" secondItem="TF2-qX-ATx" secondAttribute="bottom" id="51D-oc-nZp"/>
+                            <constraint firstItem="O3t-JZ-YTl" firstAttribute="bottom" secondItem="qcn-ly-seK" secondAttribute="bottom" id="5er-mj-W3I"/>
+                            <constraint firstItem="qcn-ly-seK" firstAttribute="trailing" secondItem="O3t-JZ-YTl" secondAttribute="trailing" id="C3c-c9-FFc"/>
+                            <constraint firstItem="TF2-qX-ATx" firstAttribute="trailing" secondItem="O3t-JZ-YTl" secondAttribute="trailing" id="Wj9-ih-DuE"/>
+                            <constraint firstItem="TF2-qX-ATx" firstAttribute="top" secondItem="O3t-JZ-YTl" secondAttribute="top" id="aOT-WB-cVE"/>
+                            <constraint firstItem="TF2-qX-ATx" firstAttribute="leading" secondItem="O3t-JZ-YTl" secondAttribute="leading" id="m7K-2r-fmq"/>
+                            <constraint firstItem="qcn-ly-seK" firstAttribute="leading" secondItem="O3t-JZ-YTl" secondAttribute="leading" id="mxo-Je-Upb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="O3t-JZ-YTl"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MJ6-Re-9t2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tzd-La-azd">
+                    <connections>
+                        <action selector="handleTap:" destination="TF2-qX-ATx" id="XVH-QI-iid"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="658" y="-547"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="lwe-Qr-PGH"/>
+    </inferredMetricsTieBreakers>
+</document>
