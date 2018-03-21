@@ -20,7 +20,15 @@ class PuzzleViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBOutlet weak var sudokuView: SudokuView!
     
+    
+    
+    @IBAction func ButtonOne(_ sender: UIButton) {
+        let row = sudokuView.selected.row
+        let column = sudokuView.selected.column
+        print(sudokuView.selected)
+    }
 }
 
 

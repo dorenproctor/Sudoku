@@ -21,9 +21,37 @@ class MainMenuViewController: UIViewController {
     }
     
     @IBAction func easyGame(_ sender: UIButton) {
-        let sudoku = SudokuModel()
-        sudoku.simplePuzzles()
-        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let puzzle = appDelegate.sudoku!
+        let stringArray = getPuzzles("simple")
+        let board = createBoard(stringArray)
+        puzzle.importBoard(board)
+        print(puzzle.board)
+    }
+    
+    func createBoard(_ stringArray: [String]) -> [[Int]] {
+        let randomIndex = Int(arc4random_uniform(UInt32(stringArray.count)))
+        let string = stringArray[randomIndex]
+        var intArray: [Int] = []
+        for chr in string {
+            intArray.append(Int(String(chr)) ?? 0)
+        }
+        var doubleArray = [[Int]](repeating: [Int](repeating: 0, count: 9), count: 9)
+        var i = 0
+        for x in 0...8 {
+            for y in 0...8 {
+                doubleArray[x][y] = intArray[i]
+                i = i+1
+            }
+        }
+        return doubleArray
+    }
+    
+    func getPuzzles(_ name : String) -> [String] {
+        guard let url = Bundle.main.url(forResource: name, withExtension: "plist") else { return [] }
+        guard let data = try? Data(contentsOf: url) else {return [] }
+        guard let array = try? PropertyListDecoder().decode([String].self, from: data) else { return [] }
+        return array
     }
     
 }

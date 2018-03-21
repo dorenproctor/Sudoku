@@ -9,28 +9,30 @@
 import Foundation
 
 class SudokuModel {
-    lazy var simplePuzzles = getPuzzles("simple")
-    lazy var hardPuzzles = getPuzzles("hard")
-    var board = [[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1,-1,-1]]
+    struct cell {
+        var pencils: [Bool] = Array(repeating: false, count: 10)
+        var number: Int = 0
+        var fixed: Bool = false
+    }
     
-    func getPuzzles(_ name : String) {//}-> [String] {
-        guard let url = Bundle.main.url(forResource: name, withExtension: "plist") else { return [] }
-        guard let data = try? Data(contentsOf: url) else {return [] }
-        guard let array = try? PropertyListDecoder().decode([String].self, from: data) else { return [] }
-        for i in 0...100 {
-            let randomIndex = Int(arc4random_uniform(UInt32(array.count)))
-            print("\(randomIndex) :: \(array[randomIndex])")
+    var board: [[cell]] = Array(repeating: Array(repeating: cell(), count: 9), count: 9)
+    
+    func importBoard(_ array: [[Int]]) {
+        for x in 0...8 {
+            for y in 0...8 {
+                board[x][y].number = array[x][y]
+                board[x][y].fixed = true
+            }
         }
-        //return array
     }
     
     func numberAt(row: Int, column: Int) -> Int {
-        return board[row][column];
+        return board[row][column].number;
     }
     
 
     func numberIsFixedAt(row : Int, column : Int) -> Bool {
-        return false;
+        return board[row][column].fixed
     }
     
     func isConflictingEntryAt(row : Int, column: Int) -> Bool {
@@ -38,10 +40,15 @@ class SudokuModel {
     }
     
     func anyPencilSetAt(row : Int, column : Int) -> Bool {
-        return false;
+        for num in board[row][column].pencils {
+            if (num) {
+                return true
+            }
+        }
+        return false
     }
     
     func isSetPencil(_ n : Int, row : Int, column : Int) -> Bool {
-        return false;ƒ
+        return board[row][column].pencils[n]
     }
 }
