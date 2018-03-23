@@ -25,8 +25,8 @@ class PuzzleViewController: UIViewController {
     
     
     @IBAction func ButtonOne(_ sender: UIButton) {
-        let row = sudokuView.selected.row
-        let column = sudokuView.selected.column
+//        let row = sudokuView.selected.row
+//        let column = sudokuView.selected.column
         print(sudokuView.selected)
     }
 }

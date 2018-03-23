@@ -22,7 +22,7 @@ class MainMenuViewController: UIViewController {
     
     @IBAction func easyGame(_ sender: UIButton) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let puzzle = appDelegate.sudoku!
+        let puzzle = appDelegate.sudoku
         let stringArray = getPuzzles("simple")
         let board = createBoard(stringArray)
         puzzle.importBoard(board)
@@ -33,8 +33,8 @@ class MainMenuViewController: UIViewController {
         let randomIndex = Int(arc4random_uniform(UInt32(stringArray.count)))
         let string = stringArray[randomIndex]
         var intArray: [Int] = []
-        for chr in string {
-            intArray.append(Int(String(chr)) ?? 0)
+        for char in string {
+            intArray.append(Int(String(char)) ?? 0)
         }
         var doubleArray = [[Int]](repeating: [Int](repeating: 0, count: 9), count: 9)
         var i = 0

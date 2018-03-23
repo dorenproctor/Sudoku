@@ -34,16 +34,13 @@ class SudokuView: UIView {
         let d = gridSize/9
         let col = Int((tapPoint.x - gridOrigin.x)/d)
         let row = Int((tapPoint.y - gridOrigin.y)/d)
-        print(col, row)
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let puzzle = appDelegate.sudoku!
+        let puzzle = appDelegate.sudoku
         
         if  0 <= col && col < 9 && 0 <= row && row < 9 {              // if inside puzzle bounds
-            print("a")
             if (!puzzle.numberIsFixedAt(row: row, column: col)) {       // and not a "fixed number"
-                print("b")
                 if (row != selected.row || col != selected.column) {  // and not already selected
-                    print("c")
                     selected.row = row                                // then select cell
                     selected.column = col
                     setNeedsDisplay()                                 // request redraw
@@ -121,7 +118,7 @@ class SudokuView: UIView {
         // Fetch Sudoku puzzle model object from app delegate.
         //
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let puzzle = appDelegate.sudoku!
+        let puzzle = appDelegate.sudoku
 
         //
         // Fetch/compute font attribute information.

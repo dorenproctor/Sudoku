@@ -38,7 +38,7 @@ class SudokuModel {
     }
     
     func isConflictingEntryAt(row : Int, column: Int) -> Bool {
-        return false;
+        return false
     }
     
     func anyPencilSetAt(row : Int, column : Int) -> Bool {
