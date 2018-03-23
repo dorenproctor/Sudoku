@@ -26,7 +26,6 @@ class MainMenuViewController: UIViewController {
         let stringArray = getPuzzles("simple")
         let board = createBoard(stringArray)
         puzzle.importBoard(board)
-        print(puzzle.board)
     }
     
     func createBoard(_ stringArray: [String]) -> [[Int]] {

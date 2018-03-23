@@ -16,6 +16,8 @@ class SudokuModel {
     }
     
     var board: [[cell]] = Array(repeating: Array(repeating: cell(), count: 9), count: 9)
+    var selected = (row : -1, column : -1)
+    var pencilOn = false
     
     func importBoard(_ array: [[Int]]) {
         for x in 0...8 {
@@ -26,6 +28,14 @@ class SudokuModel {
                 }
             }
         }
+    }
+    
+    func setPencilAt(row: Int, column: Int, number: Int) {
+        board[row][column].pencils[number] = !board[row][column].pencils[number]
+    }
+    
+    func setNumberAt(row: Int, column: Int, number: Int) {
+        board[row][column].number = number
     }
     
     func numberAt(row: Int, column: Int) -> Int {

@@ -20,14 +20,37 @@ class PuzzleViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet weak var sudokuView: SudokuView!
+
     
     
+    @IBAction func numberedButtonPressed(_ sender: UIButton) {
+//        print("sender: \(sender)")
+//        print("tag: \(sender.tag)")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let puzzle = appDelegate.sudoku
+        let row = puzzle.selected.row
+        let column = puzzle.selected.column
+        print("tag: \(sender.tag) row: \(row) col: \(column)")
+        
+        if puzzle.pencilOn {
+            puzzle.setPencilAt(row: row, column: column, number: sender.tag)
+        } else {
+            puzzle.setNumberAt(row: row, column: column, number: sender.tag)
+        }
+    }
     
-    @IBAction func ButtonOne(_ sender: UIButton) {
-//        let row = sudokuView.selected.row
-//        let column = sudokuView.selected.column
-        print(sudokuView.selected)
+    @IBAction func deleteButtonPressed(_ sender: UIButton) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let puzzle = appDelegate.sudoku
+        let row = puzzle.selected.row
+        let column = puzzle.selected.column
+        puzzle.setNumberAt(row: row, column: column, number: 0)
+    }
+    
+    @IBAction func pencilButtonPressed(_ sender: UIButton) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let puzzle = appDelegate.sudoku
+        puzzle.pencilOn = !puzzle.pencilOn
     }
 }
 

@@ -38,6 +38,8 @@ class SudokuView: UIView {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let puzzle = appDelegate.sudoku
         
+        puzzle.selected = (row, col)
+        
         if  0 <= col && col < 9 && 0 <= row && row < 9 {              // if inside puzzle bounds
             if (!puzzle.numberIsFixedAt(row: row, column: col)) {       // and not a "fixed number"
                 if (row != selected.row || col != selected.column) {  // and not already selected

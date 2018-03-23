@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C0304FB2063594A0090C10C /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0304FA2063594A0090C10C /* ButtonsView.swift */; };
 		5CBA69062060016600986C12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA69052060016600986C12 /* AppDelegate.swift */; };
 		5CBA690B2060016600986C12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA69092060016600986C12 /* Main.storyboard */; };
 		5CBA690D2060016600986C12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA690C2060016600986C12 /* Assets.xcassets */; };
@@ -21,7 +20,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5C0304FA2063594A0090C10C /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
 		5CBA69022060016600986C12 /* Sudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CBA69052060016600986C12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CBA690A2060016600986C12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 				5CBA69232062200800986C12 /* SudokuModel.swift */,
 				5CBA692A20623CF000986C12 /* MainMenuViewController.swift */,
 				5CBA692C2062457000986C12 /* PuzzleViewController.swift */,
-				5C0304FA2063594A0090C10C /* ButtonsView.swift */,
 			);
 			path = Sudoku;
 			sourceTree = "<group>";
@@ -159,7 +156,6 @@
 				5CBA69242062200800986C12 /* SudokuModel.swift in Sources */,
 				5CBA692B20623CF000986C12 /* MainMenuViewController.swift in Sources */,
 				5CBA691D206001A600986C12 /* SudokuView.swift in Sources */,
-				5C0304FB2063594A0090C10C /* ButtonsView.swift in Sources */,
 				5CBA692D2062457000986C12 /* PuzzleViewController.swift in Sources */,
 				5CBA69062060016600986C12 /* AppDelegate.swift in Sources */,
 			);
