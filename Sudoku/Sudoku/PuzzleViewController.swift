@@ -10,6 +10,9 @@ import UIKit
 
 class PuzzleViewController: UIViewController {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    @IBOutlet var sudokuView: SudokuView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,35 +25,32 @@ class PuzzleViewController: UIViewController {
     
 
     
-    
     @IBAction func numberedButtonPressed(_ sender: UIButton) {
-//        print("sender: \(sender)")
-//        print("tag: \(sender.tag)")
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let puzzle = appDelegate.sudoku
-        let row = puzzle.selected.row
-        let column = puzzle.selected.column
-        print("tag: \(sender.tag) row: \(row) col: \(column)")
-        
+        let row = sudokuView.selected.row
+        let column = sudokuView.selected.column
         if puzzle.pencilOn {
             puzzle.setPencilAt(row: row, column: column, number: sender.tag)
         } else {
             puzzle.setNumberAt(row: row, column: column, number: sender.tag)
         }
+        sudokuView.setNeedsDisplay()
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let puzzle = appDelegate.sudoku
-        let row = puzzle.selected.row
-        let column = puzzle.selected.column
+        let row = sudokuView.selected.row
+        let column = sudokuView.selected.column
+        print(row, column)
         puzzle.setNumberAt(row: row, column: column, number: 0)
+        sudokuView.setNeedsDisplay()
+
     }
     
     @IBAction func pencilButtonPressed(_ sender: UIButton) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let puzzle = appDelegate.sudoku
         puzzle.pencilOn = !puzzle.pencilOn
+        sender.isSelected = puzzle.pencilOn
     }
 }
 

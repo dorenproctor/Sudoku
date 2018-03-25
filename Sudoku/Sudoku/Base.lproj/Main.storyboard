@@ -344,6 +344,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O3t-JZ-YTl"/>
                     </view>
+                    <connections>
+                        <outlet property="sudokuView" destination="TF2-qX-ATx" id="Dqv-sZ-de6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJ6-Re-9t2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="tzd-La-azd">

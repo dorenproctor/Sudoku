@@ -14,7 +14,6 @@ class SudokuModel {
     }
     
     var board: [[cell]] = Array(repeating: Array(repeating: cell(), count: 9), count: 9)
-    var selected = (row : -1, column : -1)
     var pencilOn = false
     
     func importBoard(_ array: [[Int]]) {
@@ -59,10 +58,14 @@ class SudokuModel {
             }
         }
         // check square
+        print("row: \(row) column: \(column)")
+        let startRow = row - (row%3)
+        let startColumn = column - (column%3)
+        print("new row: \(startRow) new column: \(startColumn)")
         for i in 0...2 {
             for j in 0...2 {
-                let currentRow = row + i
-                let currentColumn = column + j
+                let currentRow = startRow + i
+                let currentColumn = startColumn + j
                 if (board[currentRow][currentColumn].number == num) {
                     if !(currentRow == row && currentColumn == column) {
                         return true
@@ -70,7 +73,6 @@ class SudokuModel {
                 }
             }
         }
-        
         return false
     }
     
