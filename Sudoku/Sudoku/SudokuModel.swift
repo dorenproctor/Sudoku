@@ -6,8 +6,6 @@
 //  Copyright © 2018 Doren Proctor. All rights reserved.
 //
 
-import Foundation
-
 class SudokuModel {
     struct cell {
         var pencils: [Bool] = Array(repeating: false, count: 10)
@@ -39,15 +37,40 @@ class SudokuModel {
     }
     
     func numberAt(row: Int, column: Int) -> Int {
-        return board[row][column].number;
+        return board[row][column].number
     }
-    
 
     func numberIsFixedAt(row : Int, column : Int) -> Bool {
         return board[row][column].fixed
     }
     
     func isConflictingEntryAt(row : Int, column: Int) -> Bool {
+        let num = board[row][column].number
+        // check row
+        for i in 0...8 {
+            if (board[row][i].number == num && i != column) {
+                return true
+            }
+        }
+        // check column
+        for i in 0...8 {
+            if (board[i][column].number == num && i != row) {
+                return true
+            }
+        }
+        // check square
+        for i in 0...2 {
+            for j in 0...2 {
+                let currentRow = row + i
+                let currentColumn = column + j
+                if (board[currentRow][currentColumn].number == num) {
+                    if !(currentRow == row && currentColumn == column) {
+                        return true
+                    }
+                }
+            }
+        }
+        
         return false
     }
     

@@ -35,43 +35,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEY-1c-XMW">
-                                <rect key="frame" x="0.0" y="64" width="375" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="New Easy Game"/>
-                                <connections>
-                                    <action selector="easyGame:" destination="XBl-kF-j50" eventType="touchUpInside" id="bNs-00-y2F"/>
-                                    <segue destination="pyC-da-puU" kind="show" identifier="Easy" id="lwe-Qr-PGH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cof-UR-IgW">
-                                <rect key="frame" x="0.0" y="111" width="375" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="New Hard Game"/>
-                                <connections>
-                                    <segue destination="pyC-da-puU" kind="show" identifier="Hard" id="TGa-Ig-DQb"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1W-2P-LjR">
-                                <rect key="frame" x="0.0" y="158" width="375" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Continue Existing Game"/>
-                                <connections>
-                                    <segue destination="pyC-da-puU" kind="show" identifier="Continue" id="3cI-M9-pLK"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pSd-ak-a2g">
+                                <rect key="frame" x="0.0" y="252.5" width="375" height="126"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEY-1c-XMW">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="New Easy Game"/>
+                                        <connections>
+                                            <action selector="easyGame:" destination="XBl-kF-j50" eventType="touchUpInside" id="bNs-00-y2F"/>
+                                            <segue destination="pyC-da-puU" kind="show" identifier="Easy" id="lwe-Qr-PGH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cof-UR-IgW">
+                                        <rect key="frame" x="0.0" y="42" width="375" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="New Hard Game"/>
+                                        <connections>
+                                            <segue destination="pyC-da-puU" kind="show" identifier="Hard" id="TGa-Ig-DQb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1W-2P-LjR">
+                                        <rect key="frame" x="0.0" y="84" width="375" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Continue Existing Game"/>
+                                        <connections>
+                                            <segue destination="pyC-da-puU" kind="show" identifier="Continue" id="3cI-M9-pLK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Yid-YH-H1u" firstAttribute="trailing" secondItem="cof-UR-IgW" secondAttribute="trailing" id="MwK-MC-cgR"/>
-                            <constraint firstItem="cof-UR-IgW" firstAttribute="top" secondItem="OEY-1c-XMW" secondAttribute="bottom" constant="5" id="Z52-D0-EPi"/>
-                            <constraint firstItem="Yid-YH-H1u" firstAttribute="trailing" secondItem="A1W-2P-LjR" secondAttribute="trailing" id="Zay-yc-RwU"/>
-                            <constraint firstItem="A1W-2P-LjR" firstAttribute="top" secondItem="cof-UR-IgW" secondAttribute="bottom" constant="5" id="a0z-3F-UIt"/>
-                            <constraint firstItem="OEY-1c-XMW" firstAttribute="leading" secondItem="Yid-YH-H1u" secondAttribute="leading" id="d7I-0o-DuF"/>
-                            <constraint firstItem="OEY-1c-XMW" firstAttribute="top" secondItem="Yid-YH-H1u" secondAttribute="top" id="j7X-Oa-T3x"/>
-                            <constraint firstItem="Yid-YH-H1u" firstAttribute="trailing" secondItem="OEY-1c-XMW" secondAttribute="trailing" id="nKg-HW-Zeq"/>
-                            <constraint firstItem="A1W-2P-LjR" firstAttribute="leading" secondItem="Yid-YH-H1u" secondAttribute="leading" id="p7t-5d-2rQ"/>
-                            <constraint firstItem="cof-UR-IgW" firstAttribute="leading" secondItem="Yid-YH-H1u" secondAttribute="leading" id="sFe-iZ-EsV"/>
+                            <constraint firstItem="pSd-ak-a2g" firstAttribute="leading" secondItem="Yid-YH-H1u" secondAttribute="leading" id="O6f-Cw-FbU"/>
+                            <constraint firstItem="pSd-ak-a2g" firstAttribute="centerY" secondItem="Yid-YH-H1u" secondAttribute="centerY" constant="-50" id="ek0-zQ-ERI"/>
+                            <constraint firstItem="Yid-YH-H1u" firstAttribute="trailing" secondItem="pSd-ak-a2g" secondAttribute="trailing" id="u1N-ah-zZe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Yid-YH-H1u"/>
                     </view>
