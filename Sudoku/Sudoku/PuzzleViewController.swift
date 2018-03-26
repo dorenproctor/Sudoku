@@ -53,7 +53,9 @@ class PuzzleViewController: UIViewController {
         let num = sender.tag
         let puzzle = appDelegate.sudoku
         if pencilEnabled {
-            puzzle.setPencilAt(row: row, column: column, number: num)
+            if puzzle.numberAt(row: row, column: column) == 0 {
+                puzzle.setPencilAt(row: row, column: column, number: num)
+            }
         } else if puzzle.numberAt(row: row, column: column) == num {
             puzzle.setNumberAt(row: row, column: column, number: 0)
         } else if puzzle.numberAt(row: row, column: column) == 0  {
