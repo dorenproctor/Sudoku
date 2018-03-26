@@ -10,6 +10,7 @@ import UIKit
 
 class PuzzleViewController: UIViewController {
     
+    var pencilEnabled = false
     var abandonGame = false
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet var sudokuView: SudokuView!
@@ -29,7 +30,6 @@ class PuzzleViewController: UIViewController {
         alert.addAction(UIAlertAction(title: NSLocalizedString("Leave and discard?", comment: "Default action"), style: .`default`, handler: { _ in
             do {
                 if (FileManager().fileExists(atPath: self.appDelegate.archive.path)) {
-                    print("AOIJSDFOIJSDOFIJEFOIJ")
                     try FileManager().removeItem(at: self.appDelegate.archive)
                 }
             } catch  {
@@ -48,30 +48,41 @@ class PuzzleViewController: UIViewController {
     
     
     @IBAction func numberedButtonPressed(_ sender: UIButton) {
-        let puzzle = appDelegate.sudoku
         let row = sudokuView.selected.row
         let column = sudokuView.selected.column
-        if puzzle.pencilOn {
-            puzzle.setPencilAt(row: row, column: column, number: sender.tag)
-        } else {
-            puzzle.setNumberAt(row: row, column: column, number: sender.tag)
+        let num = sender.tag
+        let puzzle = appDelegate.sudoku
+        if pencilEnabled {
+            puzzle.setPencilAt(row: row, column: column, number: num)
+        } else if puzzle.numberAt(row: row, column: column) == num {
+            puzzle.setNumberAt(row: row, column: column, number: 0)
+        } else if puzzle.numberAt(row: row, column: column) == 0  {
+            puzzle.setNumberAt(row: row, column: column, number: num)
+            if (puzzle.checkWin()) {
+                let alert = UIAlertController(title: "You Win!", message: "Good job!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Default action"), style: .`default`, handler: { _ in
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
         }
+        
+        }
+        
         sudokuView.setNeedsDisplay()
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
-        let puzzle = appDelegate.sudoku
         let row = sudokuView.selected.row
         let column = sudokuView.selected.column
+        let puzzle = appDelegate.sudoku
         puzzle.setNumberAt(row: row, column: column, number: 0)
+        puzzle.clearPencilAt(row: row, column: column)
         sudokuView.setNeedsDisplay()
-
     }
     
     @IBAction func pencilButtonPressed(_ sender: UIButton) {
-        let puzzle = appDelegate.sudoku
-        puzzle.pencilOn = !puzzle.pencilOn
-        sender.isSelected = puzzle.pencilOn
+        pencilEnabled = !pencilEnabled
+        sender.isSelected = pencilEnabled
     }
     
     @IBAction func menu(_ sender: Any) {
@@ -84,22 +95,15 @@ class PuzzleViewController: UIViewController {
             self.appDelegate.sudoku.clearAllEntries()
             self.sudokuView.setNeedsDisplay()
         }))
-//        alert.addAction(UIAlertAction(title: NSLocalizedString("Check for win", comment: "Third action") , style: .`default`, handler: { _ in if self.appDelegate.sudoku.checkWin() {
-//                print("You win!")
-////                let youWin = UIAlertController(title: "You win", message: "", preferredStyle: .alert)
-////                youWin.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-////                youWin.present(alert, animated: true, completion: nil)
-//            } else {
-//                print("Nope")
-//            }
-//        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Second action"), style: .`default`, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        }))
         self.present(alert, animated: true, completion: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if (abandonGame) {
-            print("a")
             abandonGame = false
             return
         }

@@ -16,7 +16,6 @@ class SudokuModel: Codable {
     }
     
     var board: [[cell]] = Array(repeating: Array(repeating: cell(), count: 9), count: 9)
-    var pencilOn = false
     
     func importBoard(_ array: [[Int]]) {
         for x in 0...8 {
@@ -110,11 +109,16 @@ class SudokuModel: Codable {
         return false
     }
     
+    func clearPencilAt(row : Int, column : Int) {
+        board[row][column].pencils = Array(repeating: false, count: 10)
+    }
+    
     func clearAllEntries() {
         for row in 0...8 {
             for column in 0...8 {
                 if !board[row][column].fixed {
                     board[row][column].number = 0
+                    clearPencilAt(row: row, column: column)
                 }
             }
         }

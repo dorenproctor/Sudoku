@@ -349,7 +349,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O3t-JZ-YTl"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="ofj-3a-eQN" userLabel="NavItem">
+                    <navigationItem key="navigationItem" title="Sudoku" id="ofj-3a-eQN" userLabel="NavItem">
                         <barButtonItem key="rightBarButtonItem" title="Leave Puzzle" id="qUZ-YI-rxj" userLabel="Leave Puzzle">
                             <connections>
                                 <action selector="leavePuzzle:" destination="pyC-da-puU" id="DWk-Ml-hhA"/>
