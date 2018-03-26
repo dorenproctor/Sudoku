@@ -10,6 +10,8 @@ import UIKit
 
 class MainMenuViewController: UIViewController {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,11 +23,34 @@ class MainMenuViewController: UIViewController {
     }
     
     @IBAction func easyGame(_ sender: UIButton) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let puzzle = appDelegate.sudoku
         let stringArray = getPuzzles("simple")
         let board = createBoard(stringArray)
         puzzle.importBoard(board)
+    }
+    
+    @IBAction func hardGame(_ sender: UIButton) {
+        let puzzle = appDelegate.sudoku
+        let stringArray = getPuzzles("hard")
+        let board = createBoard(stringArray)
+        puzzle.importBoard(board)
+    }
+    
+    @IBAction func continueGame(_ sender: UIButton) {
+        if (FileManager().fileExists(atPath: appDelegate.archive.path)) {
+            do {
+                let data = try Data(contentsOf: appDelegate.archive)
+                let decoder = PropertyListDecoder()
+                do {
+                    let board = try decoder.decode(SudokuModel.self, from: data)
+                    appDelegate.sudoku = board
+                } catch {
+                    print(error)
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
     
     func createBoard(_ stringArray: [String]) -> [[Int]] {

@@ -52,6 +52,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="New Hard Game"/>
                                         <connections>
+                                            <action selector="hardGame:" destination="XBl-kF-j50" eventType="touchUpInside" id="lPi-1f-cqW"/>
                                             <segue destination="pyC-da-puU" kind="show" identifier="Hard" id="TGa-Ig-DQb"/>
                                         </connections>
                                     </button>
@@ -60,6 +61,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="Continue Existing Game"/>
                                         <connections>
+                                            <action selector="continueGame:" destination="XBl-kF-j50" eventType="touchUpInside" id="qA2-Eb-mM4"/>
                                             <segue destination="pyC-da-puU" kind="show" identifier="Continue" id="3cI-M9-pLK"/>
                                         </connections>
                                     </button>

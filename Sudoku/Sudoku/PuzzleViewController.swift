@@ -52,6 +52,23 @@ class PuzzleViewController: UIViewController {
         puzzle.pencilOn = !puzzle.pencilOn
         sender.isSelected = puzzle.pencilOn
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParentViewController {
+            let encoder = PropertyListEncoder()
+            encoder.outputFormat = .xml
+            do {
+                let data = appDelegate.sudoku.MakeDataPersistant()!
+                try data.write(to: appDelegate.archive)
+            } catch {
+                print(error)
+            }
+//            let navigationController = self.appDelegate.window?.rootViewController as! UINavigationController
+//            let firstVC = navigationController.viewControllers[0] as! EntranceViewController
+//            firstVC.resumeButton.isHidden = false
+        }
+    }
 }
 
 

@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var sudoku: SudokuModel = SudokuModel()
+    lazy var documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    lazy var archive = documentsDirectory.appendingPathComponent("saved_game")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

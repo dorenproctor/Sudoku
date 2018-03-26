@@ -6,8 +6,10 @@
 //  Copyright © 2018 Doren Proctor. All rights reserved.
 //
 
-class SudokuModel {
-    struct cell {
+import Foundation
+
+class SudokuModel: Codable {
+    struct cell: Codable {
         var pencils: [Bool] = Array(repeating: false, count: 10)
         var number: Int = 0
         var fixed: Bool = false
@@ -28,22 +30,35 @@ class SudokuModel {
     }
     
     func setPencilAt(row: Int, column: Int, number: Int) {
-        board[row][column].pencils[number] = !board[row][column].pencils[number]
+        if (row >= 0 && column >= 0) {
+            board[row][column].pencils[number] = !board[row][column].pencils[number]
+        }
     }
     
     func setNumberAt(row: Int, column: Int, number: Int) {
-        board[row][column].number = number
+        if (row >= 0 && column >= 0) {
+            board[row][column].number = number
+        }
     }
     
     func numberAt(row: Int, column: Int) -> Int {
-        return board[row][column].number
+        if (row >= 0 && column >= 0) {
+            return board[row][column].number
+        }
+        return -1;
     }
 
     func numberIsFixedAt(row : Int, column : Int) -> Bool {
-        return board[row][column].fixed
+        if (row >= 0 && column >= 0) {
+            return board[row][column].fixed
+        }
+        return false
     }
     
     func isConflictingEntryAt(row : Int, column: Int) -> Bool {
+        if !(row >= 0 && column >= 0) { // invalid entry
+            return true
+        }
         let num = board[row][column].number
         // check row
         for i in 0...8 {
@@ -77,6 +92,9 @@ class SudokuModel {
     }
     
     func anyPencilSetAt(row : Int, column : Int) -> Bool {
+        if !(row >= 0 && column >= 0) { // invalid entry
+            return false
+        }
         for num in board[row][column].pencils {
             if (num) {
                 return true
@@ -86,6 +104,15 @@ class SudokuModel {
     }
     
     func isSetPencil(_ n : Int, row : Int, column : Int) -> Bool {
-        return board[row][column].pencils[n]
+        if (row >= 0 && column >= 0) {
+            return board[row][column].pencils[n]
+        }
+        return false
+    }
+    
+    func MakeDataPersistant() -> Data? {
+        let encoder = PropertyListEncoder()
+        encoder.outputFormat = .xml
+        return try? encoder.encode(self)
     }
 }
