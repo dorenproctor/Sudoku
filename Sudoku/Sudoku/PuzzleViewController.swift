@@ -41,7 +41,6 @@ class PuzzleViewController: UIViewController {
         let puzzle = appDelegate.sudoku
         let row = sudokuView.selected.row
         let column = sudokuView.selected.column
-        print(row, column)
         puzzle.setNumberAt(row: row, column: column, number: 0)
         sudokuView.setNeedsDisplay()
 
@@ -64,9 +63,6 @@ class PuzzleViewController: UIViewController {
             } catch {
                 print(error)
             }
-//            let navigationController = self.appDelegate.window?.rootViewController as! UINavigationController
-//            let firstVC = navigationController.viewControllers[0] as! EntranceViewController
-//            firstVC.resumeButton.isHidden = false
         }
     }
 }

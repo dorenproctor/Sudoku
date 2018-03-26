@@ -21,6 +21,8 @@ class SudokuModel: Codable {
     func importBoard(_ array: [[Int]]) {
         for x in 0...8 {
             for y in 0...8 {
+                board[x][y].fixed = false
+                board[x][y].pencils = Array(repeating: false, count: 10)
                 board[x][y].number = array[x][y]
                 if (array[x][y] != 0) {
                     board[x][y].fixed = true
@@ -73,10 +75,8 @@ class SudokuModel: Codable {
             }
         }
         // check square
-        print("row: \(row) column: \(column)")
         let startRow = row - (row%3)
         let startColumn = column - (column%3)
-        print("new row: \(startRow) new column: \(startColumn)")
         for i in 0...2 {
             for j in 0...2 {
                 let currentRow = startRow + i

@@ -77,7 +77,6 @@ class MainMenuViewController: UIViewController {
         guard let array = try? PropertyListDecoder().decode([String].self, from: data) else { return [] }
         return array
     }
-    
 }
 
 
