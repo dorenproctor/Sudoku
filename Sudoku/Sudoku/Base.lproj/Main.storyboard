@@ -44,7 +44,6 @@
                                         <state key="normal" title="New Easy Game"/>
                                         <connections>
                                             <action selector="easyGame:" destination="XBl-kF-j50" eventType="touchUpInside" id="bNs-00-y2F"/>
-                                            <segue destination="pyC-da-puU" kind="show" identifier="Easy" id="lwe-Qr-PGH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cof-UR-IgW">
@@ -53,7 +52,6 @@
                                         <state key="normal" title="New Hard Game"/>
                                         <connections>
                                             <action selector="hardGame:" destination="XBl-kF-j50" eventType="touchUpInside" id="lPi-1f-cqW"/>
-                                            <segue destination="pyC-da-puU" kind="show" identifier="Hard" id="TGa-Ig-DQb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1W-2P-LjR">
@@ -62,7 +60,6 @@
                                         <state key="normal" title="Continue Existing Game"/>
                                         <connections>
                                             <action selector="continueGame:" destination="XBl-kF-j50" eventType="touchUpInside" id="qA2-Eb-mM4"/>
-                                            <segue destination="pyC-da-puU" kind="show" identifier="Continue" id="3cI-M9-pLK"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -79,6 +76,9 @@
                     <navigationItem key="navigationItem" title="Sudoku" id="gHH-ht-P1J">
                         <barButtonItem key="backBarButtonItem" title="Main Menu" id="Od0-TJ-1pg"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="pyC-da-puU" kind="show" identifier="segueToPuzzle" id="mUi-mO-w4t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54V-Ru-8Sv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -349,6 +349,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O3t-JZ-YTl"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="ofj-3a-eQN" userLabel="NavItem">
+                        <barButtonItem key="rightBarButtonItem" title="Leave Puzzle" id="qUZ-YI-rxj" userLabel="Leave Puzzle">
+                            <connections>
+                                <action selector="leavePuzzle:" destination="pyC-da-puU" id="DWk-Ml-hhA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="sudokuView" destination="TF2-qX-ATx" id="Dqv-sZ-de6"/>
                     </connections>
@@ -363,7 +370,4 @@
             <point key="canvasLocation" x="658" y="-547"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="3cI-M9-pLK"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -27,6 +27,7 @@ class MainMenuViewController: UIViewController {
         let stringArray = getPuzzles("simple")
         let board = createBoard(stringArray)
         puzzle.importBoard(board)
+        performSegue(withIdentifier: "segueToPuzzle", sender: self)
     }
     
     @IBAction func hardGame(_ sender: UIButton) {
@@ -34,6 +35,7 @@ class MainMenuViewController: UIViewController {
         let stringArray = getPuzzles("hard")
         let board = createBoard(stringArray)
         puzzle.importBoard(board)
+        performSegue(withIdentifier: "segueToPuzzle", sender: self)
     }
     
     @IBAction func continueGame(_ sender: UIButton) {
@@ -44,12 +46,18 @@ class MainMenuViewController: UIViewController {
                 do {
                     let board = try decoder.decode(SudokuModel.self, from: data)
                     appDelegate.sudoku = board
+                    performSegue(withIdentifier: "segueToPuzzle", sender: self)
                 } catch {
                     print(error)
                 }
             } catch {
                 print(error)
             }
+        } else {
+            let alert = UIAlertController(title: "No existing game", message: "There is no previous game to load", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Default action"), style: .`default`, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

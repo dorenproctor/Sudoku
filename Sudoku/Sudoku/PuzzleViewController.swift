@@ -10,6 +10,7 @@ import UIKit
 
 class PuzzleViewController: UIViewController {
     
+    var abandonGame = false
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet var sudokuView: SudokuView!
     
@@ -23,7 +24,28 @@ class PuzzleViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func leavePuzzle(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Leave", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Leave and discard?", comment: "Default action"), style: .`default`, handler: { _ in
+            do {
+                if (FileManager().fileExists(atPath: self.appDelegate.archive.path)) {
+                    print("AOIJSDFOIJSDOFIJEFOIJ")
+                    try FileManager().removeItem(at: self.appDelegate.archive)
+                }
+            } catch  {
+                print(error)
+            }
+            self.abandonGame = true
+            _ = self.navigationController?.popViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Secondary action"), style: .`default`, handler: { _ in
+            alert.dismiss(animated: true, completion: {
+                
+            })
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     @IBAction func numberedButtonPressed(_ sender: UIButton) {
         let puzzle = appDelegate.sudoku
@@ -76,6 +98,11 @@ class PuzzleViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        if (abandonGame) {
+            print("a")
+            abandonGame = false
+            return
+        }
         if self.isMovingFromParentViewController {
             let encoder = PropertyListEncoder()
             encoder.outputFormat = .xml
