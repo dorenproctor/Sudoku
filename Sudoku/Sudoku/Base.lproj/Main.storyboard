@@ -292,6 +292,9 @@
                                                                 <integer key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="menu:" destination="pyC-da-puU" eventType="touchUpInside" id="yps-tA-Dyf"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>

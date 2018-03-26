@@ -52,6 +52,28 @@ class PuzzleViewController: UIViewController {
         sender.isSelected = puzzle.pencilOn
     }
     
+    @IBAction func menu(_ sender: Any) {
+        let alert = UIAlertController(title: "Options", message: "Select an option", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Clear all conflicting", comment: "Default action"), style: .`default`, handler: { _ in
+            self.appDelegate.sudoku.clearAllConflictingEntries()
+            self.sudokuView.setNeedsDisplay()
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Clear all", comment: "Second action"), style: .`default`, handler: { _ in
+            self.appDelegate.sudoku.clearAllEntries()
+            self.sudokuView.setNeedsDisplay()
+        }))
+//        alert.addAction(UIAlertAction(title: NSLocalizedString("Check for win", comment: "Third action") , style: .`default`, handler: { _ in if self.appDelegate.sudoku.checkWin() {
+//                print("You win!")
+////                let youWin = UIAlertController(title: "You win", message: "", preferredStyle: .alert)
+////                youWin.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+////                youWin.present(alert, animated: true, completion: nil)
+//            } else {
+//                print("Nope")
+//            }
+//        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if self.isMovingFromParentViewController {

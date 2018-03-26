@@ -10,9 +10,9 @@ import Foundation
 
 class SudokuModel: Codable {
     struct cell: Codable {
-        var pencils: [Bool] = Array(repeating: false, count: 10)
         var number: Int = 0
         var fixed: Bool = false
+        var pencils: [Bool] = Array(repeating: false, count: 10)
     }
     
     var board: [[cell]] = Array(repeating: Array(repeating: cell(), count: 9), count: 9)
@@ -24,7 +24,7 @@ class SudokuModel: Codable {
                 board[x][y].fixed = false
                 board[x][y].pencils = Array(repeating: false, count: 10)
                 board[x][y].number = array[x][y]
-                if (array[x][y] != 0) {
+                if array[x][y] != 0 {
                     board[x][y].fixed = true
                 }
             }
@@ -32,13 +32,13 @@ class SudokuModel: Codable {
     }
     
     func setPencilAt(row: Int, column: Int, number: Int) {
-        if (row >= 0 && column >= 0) {
+        if row >= 0 && column >= 0 {
             board[row][column].pencils[number] = !board[row][column].pencils[number]
         }
     }
     
     func setNumberAt(row: Int, column: Int, number: Int) {
-        if (row >= 0 && column >= 0) {
+        if row >= 0 && column >= 0 {
             board[row][column].number = number
         }
     }
@@ -64,13 +64,13 @@ class SudokuModel: Codable {
         let num = board[row][column].number
         // check row
         for i in 0...8 {
-            if (board[row][i].number == num && i != column) {
+            if board[row][i].number == num && i != column {
                 return true
             }
         }
         // check column
         for i in 0...8 {
-            if (board[i][column].number == num && i != row) {
+            if board[i][column].number == num && i != row {
                 return true
             }
         }
@@ -81,7 +81,7 @@ class SudokuModel: Codable {
             for j in 0...2 {
                 let currentRow = startRow + i
                 let currentColumn = startColumn + j
-                if (board[currentRow][currentColumn].number == num) {
+                if board[currentRow][currentColumn].number == num {
                     if !(currentRow == row && currentColumn == column) {
                         return true
                     }
@@ -95,8 +95,8 @@ class SudokuModel: Codable {
         if !(row >= 0 && column >= 0) { // invalid entry
             return false
         }
-        for num in board[row][column].pencils {
-            if (num) {
+        for pencil in board[row][column].pencils {
+            if pencil {
                 return true
             }
         }
@@ -104,10 +104,44 @@ class SudokuModel: Codable {
     }
     
     func isSetPencil(_ n : Int, row : Int, column : Int) -> Bool {
-        if (row >= 0 && column >= 0) {
+        if row >= 0 && column >= 0 {
             return board[row][column].pencils[n]
         }
         return false
+    }
+    
+    func clearAllEntries() {
+        for row in 0...8 {
+            for column in 0...8 {
+                if !board[row][column].fixed {
+                    board[row][column].number = 0
+                }
+            }
+        }
+    }
+    
+    func clearAllConflictingEntries() {
+        for row in 0...8 {
+            for column in 0...8 {
+                if isConflictingEntryAt(row: row, column: column) {
+                    board[row][column].number = 0
+                }
+            }
+        }
+    }
+    
+    func checkWin() -> Bool {
+        for row in 0...8 {
+            for column in 0...8 {
+                if isConflictingEntryAt(row: row, column: column) {
+                    return false
+                }
+                if numberAt(row: row, column: column) == 0 {
+                    return false
+                }
+            }
+        }
+        return true
     }
     
     func MakeDataPersistant() -> Data? {
