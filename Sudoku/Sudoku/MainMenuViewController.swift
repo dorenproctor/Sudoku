@@ -10,10 +10,10 @@ import UIKit
 
 class MainMenuViewController: UIViewController {
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    // last number is a 2
+    // the remainging number is 2
 //    let customGame = "29416738578645329113598274686729513495234167834187652942361985767952841351873496."
     let customGame = ""
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +25,17 @@ class MainMenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func startGame(_ gameType: String){
+func startGame(_ gameType: String) {
         if (FileManager().fileExists(atPath: appDelegate.archive.path)) {
-            let alert = UIAlertController(title: "There is an existing game", message: "Starting a new game will erase its data", preferredStyle: .alert)
+            let alert = UIAlertController(title: "A game already exists", message: "Starting a new game will erase its data", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Secondary action"), style: .`default`, handler: { _ in
+            }))
             alert.addAction(UIAlertAction(title: NSLocalizedString("Continue", comment: "Default action"), style: .`default`, handler: { _ in
                 let puzzle = self.appDelegate.sudoku
                 let stringArray = self.getPuzzles(gameType)
                 let board = self.createBoard(stringArray)
                 puzzle.importBoard(board)
                 self.performSegue(withIdentifier: "segueToPuzzle", sender: nil)
-            }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Secondary action"), style: .`default`, handler: { _ in
             }))
             self.present(alert, animated: true, completion: nil)
         } else {

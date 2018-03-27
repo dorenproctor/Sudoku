@@ -17,6 +17,7 @@
 		5CBA69242062200800986C12 /* SudokuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA69232062200800986C12 /* SudokuModel.swift */; };
 		5CBA692B20623CF000986C12 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA692A20623CF000986C12 /* MainMenuViewController.swift */; };
 		5CBA692D2062457000986C12 /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA692C2062457000986C12 /* PuzzleViewController.swift */; };
+		5CF1717D2069F6690001665B /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5CF1717C2069F6690001665B /* README.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		5CBA69232062200800986C12 /* SudokuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuModel.swift; sourceTree = "<group>"; };
 		5CBA692A20623CF000986C12 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		5CBA692C2062457000986C12 /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
+		5CF1717C2069F6690001665B /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				5CBA69232062200800986C12 /* SudokuModel.swift */,
 				5CBA692A20623CF000986C12 /* MainMenuViewController.swift */,
 				5CBA692C2062457000986C12 /* PuzzleViewController.swift */,
+				5CF1717C2069F6690001665B /* README.txt */,
 			);
 			path = Sudoku;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 				5CBA691F206001A600986C12 /* hard.plist in Resources */,
 				5CBA690D2060016600986C12 /* Assets.xcassets in Resources */,
 				5CBA6920206001A600986C12 /* simple.plist in Resources */,
+				5CF1717D2069F6690001665B /* README.txt in Resources */,
 				5CBA690B2060016600986C12 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

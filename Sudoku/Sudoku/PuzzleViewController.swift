@@ -26,8 +26,8 @@ class PuzzleViewController: UIViewController {
     }
     
     @IBAction func leavePuzzle(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Leave", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Leave and discard?", comment: "Default action"), style: .`default`, handler: { _ in
+        let alert = UIAlertController(title: "Abandon this game?", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Leave and discard game", comment: "Default action"), style: .`default`, handler: { _ in
             do {
                 if (FileManager().fileExists(atPath: self.appDelegate.archive.path)) {
                     try FileManager().removeItem(at: self.appDelegate.archive)
